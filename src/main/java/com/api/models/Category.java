@@ -1,15 +1,8 @@
 package com.api.models;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
 public class Category {
 
-	@SerializedName("id")
-	@Expose
 	private Long id;
-	@SerializedName("name")
-	@Expose
 	private String name;
 
 	public Long getId() {

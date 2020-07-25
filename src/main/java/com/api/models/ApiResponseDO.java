@@ -1,18 +1,9 @@
 package com.api.models;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
 public class ApiResponseDO {
 
-	@SerializedName("code")
-	@Expose
 	private Long code;
-	@SerializedName("type")
-	@Expose
 	private String type;
-	@SerializedName("message")
-	@Expose
 	private String message;
 
 	public Long getCode() {

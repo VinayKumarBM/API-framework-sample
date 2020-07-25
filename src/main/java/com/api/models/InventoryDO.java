@@ -1,18 +1,9 @@
 package com.api.models;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
 public class InventoryDO {
 
-	@SerializedName("sold")
-	@Expose
 	private Integer sold;	
-	@SerializedName("pending")
-	@Expose
 	private Integer pending;
-	@SerializedName("available")
-	@Expose
 	private Integer available;
 
 	public Integer getSold() {

@@ -1,28 +1,14 @@
 package com.api.models;
 
 import java.util.List;
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
 
 public class PetsDO {
 
-	@SerializedName("id")
-	@Expose
 	private Long id;
-	@SerializedName("category")
-	@Expose
 	private Category category;
-	@SerializedName("name")
-	@Expose
 	private String name;
-	@SerializedName("photoUrls")
-	@Expose
 	private List<String> photoUrls = null;
-	@SerializedName("tags")
-	@Expose
 	private List<Tag> tags = null;
-	@SerializedName("status")
-	@Expose
 	private String status;
 
 	public Long getId() {

@@ -1,27 +1,12 @@
 package com.api.models;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
 public class OrderDO {
 
-@SerializedName("id")
-@Expose
 private Long id;
-@SerializedName("petId")
-@Expose
 private Long petId;
-@SerializedName("quantity")
-@Expose
 private Long quantity;
-@SerializedName("shipDate")
-@Expose
 private String shipDate;
-@SerializedName("status")
-@Expose
 private String status;
-@SerializedName("complete")
-@Expose
 private Boolean complete;
 
 public Long getId() {
