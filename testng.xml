@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite thread-count="3" name="API Suite" parallel="tests">
-	<test name="Users Test">
+	<test name="UsersTest">
 		<classes>
 			<class name="com.api.tests.UserAPITests" />
 		</classes>
 	</test>
-	<test name="Pets Test">
+	<test name="PetsTest">
 		<classes>
 			<class name="com.api.tests.PetsAPITests" />
 		</classes>
 	</test>
-	<test name="Store Test">
+	<test name="StoreTest">
 		<classes>
 			<class name="com.api.tests.StoreAPITests" />
 		</classes>
