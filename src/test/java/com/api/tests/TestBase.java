@@ -8,23 +8,21 @@ import java.lang.reflect.Method;
 import org.apache.logging.log4j.ThreadContext;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Listeners;
 import org.testng.xml.XmlTest;
 
 import com.api.utils.Logs;
+import com.api.utils.ReportManager;
 import com.api.utils.RestExecutor;
 import com.api.utils.RestValidator;
-import com.aventstack.extentreports.testng.listener.ExtentITestListenerAdapter;
 import com.github.javafaker.Faker;
 
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
-//	mvn clean test && mvn surefire-report:report-only && mvn site -DgenerateReports=false
-@Listeners(ExtentITestListenerAdapter.class)
 public class TestBase {
 	RequestSpecification request;
 	RestValidator restValidator;
@@ -38,8 +36,7 @@ public class TestBase {
 		File logFile = new File(filePath);
 		if(!logFile.exists()) {
 			logFile.mkdir();
-		}
-		
+		}		
 		ThreadContext.put("ROUTINGKEY", filePath+File.separator+test.getName());
 	}
 	
@@ -51,8 +48,8 @@ public class TestBase {
 					.accept(ContentType.JSON);
 		restExecutor = new RestExecutor(request);
 		restValidator = new RestValidator();
-		
-		logDetails(method.getName(), "started");
+		ReportManager.startTest(method.getName());
+		Logs.testDetails(method.getName(), "started");
 		fake = new Faker();		
 	}
 	
@@ -60,15 +57,15 @@ public class TestBase {
 	public void teardown(ITestResult result) {
 		String status = "PASSED";
 		if(result.getStatus()==ITestResult.FAILURE) {
-			status = "FAILED";			
+			status = "FAILED";	
+			Logs.fail(result.getThrowable());
 		}
-		logDetails(result.getName(), status);
+		Logs.testDetails(result.getName(), status);
 	}
 	
-	private void logDetails(String testName, String message) {
-		Logs.info("===============================================================================");
-		Logs.info("\t\t\t"+String.format("%S - %S", testName, message)+"");
-		Logs.info("===============================================================================");
+	@AfterSuite
+	public void flushReport() {
+		ReportManager.endTest();
 	}
 }
 //	mvn clean test && mvn surefire-report:report-only && mvn site -DgenerateReports=false

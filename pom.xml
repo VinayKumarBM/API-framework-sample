@@ -49,11 +49,11 @@
 			<artifactId>log4j-core</artifactId>
 			<version>2.12.1</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/com.aventstack/extentreports-testng-adapter -->
+		<!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
 		<dependency>
 			<groupId>com.aventstack</groupId>
-			<artifactId>extentreports-testng-adapter</artifactId>
-			<version>1.0.7</version>
+			<artifactId>extentreports</artifactId>
+			<version>4.0.9</version>
 		</dependency>
 	</dependencies>
 
